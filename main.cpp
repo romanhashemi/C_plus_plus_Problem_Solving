@@ -1,79 +1,63 @@
-#include <iostream>
+#include <iostream> 
+#include <vector>
 using namespace std;
 
-
-int add(int a, int b) 
+struct Student 
 {
-    return a + b;
+    int id;
+    string name;
+    float grade;
+};
+
+vector<Student> student;
+void add_student () 
+{
+    Student s;
+    
+    cout << "Enter Student ID: " << endl;
+    cin >> s.id;
+    
+    cout << "Enter Student's Name: " << endl;
+    cin >> s.name;
+    
+    cout << "Enter Student's Grade: " << endl;
+    cin >> s.grade;
+    
+    student.push_back(s);
+    
+    cout << "Student Added Successfully." << endl;
+    
 }
 
-int multiply(int a, int b) 
-{
-    return a * b;
-}
-
-int subtract(int a, int b) 
-{
-    return a - b;
-}
-
-
-int divide (int a, int b) 
-{
-    if (b == 0) 
-    {
-        cout << "Error: Division by zero!" << endl;
-        return 0;
-    }
-    return a / b;
-}
-
-
-int main() 
+int main ()
 {
     int choice;
-    while (true) 
+    do 
     {
-        cout << "Select operation:" << endl;
-        cout << "1. Add" << endl;
-        cout << "2. Subtract" << endl;
-        cout << "3. Multiply" << endl;
-        cout << "4. Divide" << endl;
-        cout << "5. Exit" << endl;
+        cout << "1- Add Student \n 2- Search Student \n 3- Display Student \n 4- Show Average Grade \n 5- EXIT";
         cin >> choice;
-
-        if (choice == 5) 
+        switch(choice)
         {
-            break;
-        }
-
-        int num1, num2;
-        cout << "Enter first number: ";
-        cin >> num1;
-
-        cout << "Enter second number: ";
-        cin >> num2;
-        
-        switch (choice) 
-        {
-            case 1:
-                cout << "Result: " << add(num1, num2) << endl;
+            case 1: 
+                add_student();
                 break;
-            case 2:
-                cout << "Result: " << subtract(num1, num2) << endl;
-                break;
-            case 3:
-                cout << "Result: " << multiply(num1, num2) << endl;
-                break;
-            case 4:
-                cout << "Result: " << divide(num1, num2) << endl;
-                break;
+            
             default:
-                cout << "Invalid choice!" << endl;
+                cout << "Invalid entry." << endl;
         }
-    }
-
-
+    } while (choice !=5);
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
