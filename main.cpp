@@ -28,7 +28,54 @@ void add_student ()
     cout << "Student Added Successfully." << endl;
     
 }
+void display_student ()
+{
+    for (auto s : student)
+    {
+        cout << "ID: " << s.id << "-" << "Name: " << s.name << "-" << "Grade: " << s.grade << endl;
+        
+    }
+}
 
+void avg_grade()
+{
+    if (student.empty())
+        return;
+        
+    float sum = 0;
+    
+    for (auto s : student)
+    {
+        sum += s.grade;
+    }
+    
+    cout << "Average grade: " << sum/student.size() << endl;
+   
+}
+
+
+
+
+void search_student()
+{
+    int id;
+    cout << "Enter ID to search: " << endl;
+    cin >> id ;
+    
+    for (auto s: student)
+    {
+        if (s.id == id)
+        {
+            cout << "ID Match: " << s.name << "-"<< s.grade << endl; 
+            return;
+        }
+    }
+    
+    cout << "Student not found.";
+    
+    
+
+}
 int main ()
 {
     int choice;
@@ -41,17 +88,27 @@ int main ()
             case 1: 
                 add_student();
                 break;
-            
+            case 2 :
+                search_student();
+                break;
+            case 3 : 
+                display_student();
+                break;
+            case 4 :
+                avg_grade();
+                break;
+            case 5 :
+                cout << "Goodbye!"<< endl;
+                break;
+        
             default:
                 cout << "Invalid entry." << endl;
         }
+       
     } while (choice !=5);
 
     return 0;
 }
-
-
-
 
 
 
